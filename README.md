@@ -15,7 +15,7 @@ fgcov aims to solve this problem without requiring you to compile the bleeding-e
 
 1. The `LD_PRELOAD` trick. A special shared library that overrides the `fopen` function is injected into gcov. If gcov attempts to write a `*.gcov` file, it will intercept this, hash the filename and then invoke the real `fopen` function.
 2. When the modified `fopen` function is called, it will also override the specified string buffer containing the filename so that also gcov is "informed" of this change.
-3. The special shared library (`libgcov.so`) is injected into the `fgcov` binary and is extracted to `/tmp` when the program is ran. `fgcov` then runs `gcov` by specifying `libfgcov` in the `LD_PRELOAD` environment variable.
+3. The special shared library (`libgcov.so`) is injected into the `fgcov` binary and is extracted to `/tmp` when the program is run. `fgcov` then runs `gcov` by specifying `libfgcov` in the `LD_PRELOAD` environment variable.
 
 See:
 
